@@ -1,6 +1,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <string>
+#include <algorithm>
 #include <fcntl.h>
 #include <random>
 #include <time.h>
@@ -59,6 +60,7 @@ int main() {
     if(pid1 > 0 && pid2 > 0) {
         while(read(STDIN_FILENO, &c, sizeof(c))) {
             if(c == '\n' || c == ' ' || c == '\t') {
+                reverse(s.begin(), s.end());
                 s += '\n';
                 x = rand() % (end - start + 1) + start;
                 if(x <= 80) {
